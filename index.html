@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional EMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <h2>Professional EMI Calculator</h2>
+        <div class="error" id="error-message"></div>
+        
+        <div class="input-group">
+            <label for="principal">Loan Amount (Principal)</label>
+            <input type="number" id="principal" placeholder="Enter principal amount">
+        </div>
+        
+        <div class="input-group">
+            <label for="rate">Annual Interest Rate (%)</label>
+            <input type="number" id="rate" step="0.01" placeholder="Enter annual interest rate">
+        </div>
+        
+        <div class="input-group">
+            <label for="tenure">Loan Tenure</label>
+            <div class="currency-unit">
+                <input type="number" id="tenure" placeholder="Enter loan tenure">
+                <select id="tenure-unit">
+                    <option value="years">Years</option>
+                    <option value="months">Months</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="currency">Currency</label>
+            <select id="currency">
+                <option value="INR">₹ Indian Rupee</option>
+                <option value="USD">$ US Dollar</option>
+                <option value="EUR">€ Euro</option>
+                <option value="GBP">£ British Pound</option>
+            </select>
+        </div>
+
+        <button onclick="calculateEMI()">Calculate EMI</button>
+        
+        <div class="results" id="results">
+            <div class="result-item">
+                <span>Monthly EMI:</span>
+                <span class="result-value" id="emi"></span>
+            </div>
+            <div class="result-item">
+                <span>Total Payment:</span>
+                <span class="result-value" id="total-payment"></span>
+            </div>
+            <div class="result-item">
+                <span>Total Interest:</span>
+                <span class="result-value" id="total-interest"></span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="secondary-button" onclick="toggleSchedule()" id="toggle-schedule">Show Payment Schedule</button>
+            <button class="secondary-button" onclick="exportCSV()" id="export-csv" style="display: none;">Export as CSV</button>
+        </div>
+
+        <div id="schedule-container">
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Payment</th>
+                        <th>Principal</th>
+                        <th>Interest</th>
+                        <th>Remaining Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
